@@ -1,0 +1,16 @@
+[project]
+name = "docker-railway-atlantica-workshop"
+version = "0.1.0"
+description = "A basic FastAPI project to play around docker and railway during the AtlanticaConf 2025"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiologger>=0.7.0",
+    "anyio>=4.9.0",
+    "databases[aiopg]>=0.9.0",
+    "fastapi[standard]>=0.115.12",
+    "pydantic-settings>=2.9.1",
+    "python-ulid>=3.0.0",
+    "sqlmodel>=0.0.24",
+    "toolz>=1.0.0",
+]
