@@ -1,3 +1,4 @@
+import databases
 from typing import List
 
 from event_manager.core.event.models.event import Event
@@ -6,6 +7,9 @@ from event_manager.core.event.models.value_objects import EventId
 
 
 class PostgresSQLEventRepository(EventRepository):
+
+    def __init__(self, db: databases.Database):
+        self.db = db
 
     def search(self) -> List[Event]:
         pass
