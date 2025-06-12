@@ -117,7 +117,7 @@ class PriceValue(IntegerValue):
 
     @property
     def value(self) -> float:
-        return self._value / 100
+        return self._value
 
     @property
     def raw_value(self) -> int:

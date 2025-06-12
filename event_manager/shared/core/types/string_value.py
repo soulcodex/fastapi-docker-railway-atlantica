@@ -1,7 +1,7 @@
 from typing import Text
 
 
-class StringValue:
+class StringValue(str):
 
     def __init__(self, value: Text):
         self.__value = value

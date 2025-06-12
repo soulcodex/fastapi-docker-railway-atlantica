@@ -9,7 +9,7 @@ from event_manager.core.event.services.event_searcher_service import EventSearch
 
 
 async def event_repository(db: Annotated[databases.Database, Depends(database_connection)]) -> EventRepository:
-    return PostgresSQLEventRepository(db=db)
+    return PostgresSQLEventRepository(db=db, schema="event_manager")
 
 
 async def event_fetcher_service(repo: Annotated[EventRepository, Depends(event_repository)]) -> EventSearcherService:

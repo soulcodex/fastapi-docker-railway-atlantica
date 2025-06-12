@@ -6,8 +6,8 @@ from event_manager.core.event.models.value_objects import EventId
 
 class EventRepository(Protocol):
 
-    def fetch_by_id(self, _id: EventId) -> Event:
+    async def fetch_by_id(self, _id: EventId) -> Event:
         pass
 
-    def search(self) -> List[Event]:
+    async def search(self) -> List[Event]:
         pass

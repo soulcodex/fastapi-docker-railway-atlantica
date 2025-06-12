@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     ENV: str = Field(default='development')
     PYTHONPATH: str = Field(default='$PWD')
     LOG_LEVEL: str = Field(default='debug')
-    DATABASE_PG_URL: PostgresDsn = Field(default='postgresql://postgres:postgres@localhost:5432/postgres')
+    DATABASE_PG_URL: PostgresDsn = Field(default='postgresql://event_manager_db_role:password@database:5432/event_manager')
     WEB_APP_DEBUG: bool = Field(default=False)
     WEB_APP_TITLE: str = Field(default='Event Manager API')
     WEB_APP_DESCRIPTION: str = Field(default='A powerful event manager API made to manage events with ease')
@@ -22,7 +22,7 @@ class Settings(BaseSettings):
 
 
 def _configure_initial_settings() -> Callable[[], Settings]:
-    load_dotenv()
+    load_dotenv(dotenv_path='.env')
     settings = Settings()
 
     def fn() -> Settings:

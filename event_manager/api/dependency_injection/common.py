@@ -1,4 +1,7 @@
 from logging import Logger
+from typing import Any, AsyncGenerator
+
+from databases import Database
 from typing_extensions import Annotated
 from fastapi import Depends
 
@@ -24,8 +27,11 @@ async def environment_handler() -> environment.EnvironmentHandler:
     return environment.NativeEnvironmentHandler()
 
 
-async def database_connection(settings: Annotated[Settings, Depends(app_settings)]) -> databases.Database:
-    return databases.Database(url=str(settings.DATABASE_PG_URL), min_size=5, max_size=20)
+async def database_connection(settings: Annotated[Settings, Depends(app_settings)]) -> AsyncGenerator[Database, Any]:
+    db = databases.Database(url=str(settings.DATABASE_PG_URL), min_size=5, max_size=20)
+    await db.connect()
+    yield db
+    await db.disconnect()
 
 
 async def ulid_provider() -> identifiers.ULIDProvider:

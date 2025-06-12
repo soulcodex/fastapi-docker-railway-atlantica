@@ -8,5 +8,5 @@ class EventSearcherService:
         self.repository = repository
 
     async def search(self) -> List[Event]:
-        events = self.repository.search()
+        events = await self.repository.search()
         return events

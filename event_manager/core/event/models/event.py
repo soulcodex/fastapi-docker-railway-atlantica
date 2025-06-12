@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date, time
 from typing import Dict, Text, Any
 from event_manager.core.event.models.value_objects import (
     EventId,
@@ -36,42 +36,6 @@ class Event:
         self.__created_at = created_at
         self.__updated_at = updated_at
 
-    @property
-    def id(self) -> EventId:
-        return self.__event_id
-
-    @property
-    def title(self) -> Title:
-        return self.__title
-
-    @property
-    def description(self) -> Description:
-        return self.__description
-
-    @property
-    def price(self) -> Price:
-        return self.__price
-
-    @property
-    def venue(self) -> Venue:
-        return self.__venue
-
-    @property
-    def event_date(self) -> EventDate:
-        return self.__event_date
-
-    @property
-    def event_hour(self) -> EventHour:
-        return self.__event_hour
-
-    @property
-    def created_at(self) -> CreatedAt:
-        return self.__created_at
-
-    @property
-    def updated_at(self) -> UpdatedAt:
-        return self.__updated_at
-
     @classmethod
     def from_primitives(
             cls,
@@ -80,8 +44,8 @@ class Event:
             description: Text,
             price: int,
             venue: Text,
-            event_date: datetime,
-            event_hour: datetime,
+            event_date: date,
+            event_hour: time,
             created_at: datetime,
             updated_at: datetime,
     ) -> "Event":
@@ -91,8 +55,8 @@ class Event:
             description=Description(description),
             price=Price(price),
             venue=Venue(venue),
-            event_date=EventDate(event_date.date()),
-            event_hour=EventHour(event_hour.time()),
+            event_date=EventDate(event_date),
+            event_hour=EventHour(event_hour),
             created_at=CreatedAt(created_at),
             updated_at=UpdatedAt(updated_at),
         )
