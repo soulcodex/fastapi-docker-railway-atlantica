@@ -1,7 +1,7 @@
 # Python-generated files
 __pycache__/
 *.py[oc]
-build/
+.build/
 dist/
 wheels/
 *.egg-info
@@ -12,3 +12,19 @@ wheels/
 # IDE's folders
 .vscode
 .idea
+
+# Environment variables
+.env
+
+# Docker files
+.docker
+Dockerfile
+!Dockerfile.workshop
+docker-compose.yaml
+!docker-compose.workshop.yaml
+
+# Logs
+*.log
+
+# Coverage reports
+.coverage

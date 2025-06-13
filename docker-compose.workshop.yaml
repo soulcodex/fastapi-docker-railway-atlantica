@@ -1,0 +1,28 @@
+services:
+  database:
+    image: ""
+    environment:
+      POSTGRES_USER: ""
+      POSTGRES_PASSWORD: ""
+    ports:
+      - "0:5432"
+    volumes:
+      - # The script needed to load the events data needed to use the API
+      - # Would you like to lose your data? xD
+  event_manager:
+    build:
+      context: .
+      dockerfile: ./.docker/event_manager/Dockerfile
+    ports:
+      - "0:0"
+    depends_on:
+      - database
+    volumes:
+      - # The app volume mapping
+      - # The .env file needed to bootstrap the app
+      - # The python version file to indicate UV which version of python should use
+      - # The project.toml is a file used by UV to recreate the global state of python in terms of dependencies
+      - # uv.lock is a file used by UV to track dependency versions installed in the project
+
+volumes:
+  db_data:
